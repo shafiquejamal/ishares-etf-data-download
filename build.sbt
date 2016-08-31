@@ -1,8 +1,8 @@
-name := """temp1"""
+name := """securitiesdata"""
 
 version := "1.0"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 // Change this to another test framework if you prefer
 libraryDependencies ++= Seq(
@@ -14,3 +14,6 @@ libraryDependencies ++= Seq(
   "joda-time" % "joda-time" % "2.9.4"
 )
 
+flywayUrl := sys.props.getOrElse("SECURITIESDATA_URL", default = "jdbc:postgresql://localhost:5432/securitiesdata")
+flywayUser := sys.props.getOrElse("SECURITIESDATA_USER", default = "postgres")
+flywayPassword := sys.props.getOrElse("SECURITIESDATA_PASSWORD", default = "postgres")
