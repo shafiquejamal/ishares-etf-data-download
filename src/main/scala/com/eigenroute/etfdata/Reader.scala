@@ -10,20 +10,33 @@ object Reader {
 
   def readETFData(file:File):Seq[ETFData] = {
     val dateFormatter = DateTimeFormat.forPattern("MMM dd, yyy")
-    val rawData = io.Source.fromFile(file).getLines.toList.tail
+    val allRawData = io.Source.fromFile(file).getLines.toList
+    val rawData = allRawData.tail
+    val header = allRawData.head
     val code = file.getName.take(3)
     val brand = file.getName.drop(11).dropRight(4)
+    val number = file.getName.slice(4,10)
+
+    val numberOfHeadings = header.split(""",(?=([^\"]*\"[^\"]*\")*[^\"]*$)""").length
 
     for (line <- rawData) yield {
       // https://stackoverflow.com/questions/13335651/scala-split-string-by-commnas-ignoring-commas-between-quotes
       val cols = line.split(""",(?=([^\"]*\"[^\"]*\")*[^\"]*$)""").map(_.trim)
+      val unparsedDate =  cols(0)
+
+      val (indexReturn:Double, nav:Double, exDividend:Double) = if (numberOfHeadings == 3) {
+        (0d, convertStringColumnToDouble(cols(1)), convertStringColumnToDouble(cols(2)))
+      } else {
+        (convertStringColumnToDouble(cols(1)), convertStringColumnToDouble(cols(2)), convertStringColumnToDouble(cols(3)))
+      }
+
       ETFData(
-        dateFormatter.parseDateTime(cols(0).replaceAllLiterally(""""""", "")),
+        dateFormatter.parseDateTime(unparsedDate.replaceAllLiterally(""""""", "")),
         code,
         brand,
-        convertStringColumnToDouble(cols(1)),
-        convertStringColumnToDouble(cols(2)),
-        convertStringColumnToDouble(cols(3))
+        indexReturn,
+        nav,
+        exDividend
       )
     }
   }.toSeq

@@ -2,19 +2,30 @@ package com.eigenroute
 
 import java.io.File
 
+import com.eigenroute.db.DevProdDBConfig
+import com.eigenroute.etfdata.{ETFDAO, Reader}
+import com.eigenroute.util.{UUIDProviderImpl, TimeProviderImpl}
+
 object Main {
 
   def main(args: Array[String]): Unit = {
 
     val filesDirectory = new File(args(0))
+    println(filesDirectory.getAbsolutePath)
+    val files = filesDirectory.listFiles.filter(_.isFile).filter(_.getAbsolutePath.endsWith(".csv")).toList
 
-    val files = if (filesDirectory.exists && filesDirectory.isDirectory) {
-      filesDirectory.listFiles.filter(_.isFile).filter(_.getAbsolutePath.endsWith(".xls")).toList
-    } else if (filesDirectory.isFile) {
-      List(filesDirectory)
+    val dBConfig = new DevProdDBConfig()
+    dBConfig.setUpAllDB()
+
+    files.foreach { file =>
+      println(file.getAbsolutePath)
+      val securitiesData = Reader.readETFData(file)
+      securitiesData.foreach { eTFDATA =>
+        new ETFDAO(TimeProviderImpl, UUIDProviderImpl, dBConfig).save(eTFDATA)
+        println(eTFDATA)
+      }
     }
 
-
-
+    dBConfig.closeAll()
   }
 }

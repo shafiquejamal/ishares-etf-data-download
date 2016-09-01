@@ -7,7 +7,7 @@ import org.scalatest.{BeforeAndAfterEach, FlatSpec, ShouldMatchers}
 import scalikejdbc.NamedAutoSession
 import org.scalatest.TryValues._
 
-class ETFDAOTest
+class ETFDAOUTest
   extends FlatSpec
   with ShouldMatchers
   with ETFDataFixture

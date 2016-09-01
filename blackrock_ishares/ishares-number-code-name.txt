@@ -71,7 +71,6 @@
 239532,ishares-equal-weight-banc-lifeco-etf,CEW
 272102,ishares-core-msci-eafe-imi-index,XFH
 239616,ishares-msci-canada-minimum-volatility-index-etf,XMV
-241528,ishares-gold-bullion-etf,CGL
 239498,ishares-canadian-value-index-etf,XCV
 272104,ishares-core-sp-us-total-market-index-etf,XUU
 239470,ishares-bric-index-fund,CBQ
