@@ -13,7 +13,7 @@ Create the postgres databases according to the environment variables you set.
 git clone https://github.com/shafiquejamal/ishares-etf-data-download.git some_directory
 cd some_directory
 mkdir downloaded_files
-sbt flywayMigrate
+sbt -DSECURITIESDATA_DEFAULT_DB_USERNAME=${SECURITIESDATA_DEFAULT_DB_USERNAME} -DSECURITIESDATA_DEFAULT_DB_PASSWORD=${SECURITIESDATA_DEFAULT_DB_PASSWORD} flywayMigrate
 sbt assembly
 ./download_files.sh
 ```
