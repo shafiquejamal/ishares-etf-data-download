@@ -18,6 +18,14 @@ class ETFDAO(timeProvider:TimeProvider, uUIDProvider: UUIDProvider, dBConfig: DB
           exdividend = ${eTFData.exDividends}
          """.map(ETFData.converter).single().apply()
 
+  def latestBy(code:String, xnumber:String):Option[ETFData] =
+    NamedDB(Symbol(dBConfig.dBName)) readOnly { implicit dBSession =>
+      sql"""SELECT code, brand, xnumber, indexreturn, nav, asofdate, exdividend FROM historical where
+            code = ${code} AND
+            xnumber = ${xnumber} ORDER BY asofdate DESC LIMIT 1
+           """.map(ETFData.converter).single().apply()
+    }
+
   def by(eTFData: ETFData):Option[ETFData] =
     NamedDB(Symbol(dBConfig.dBName)) readOnly { implicit dBSession => queryETFData(eTFData) }
 
@@ -29,7 +37,7 @@ class ETFDAO(timeProvider:TimeProvider, uUIDProvider: UUIDProvider, dBConfig: DB
       if (eTFDataAlreadyInDB.isEmpty) {
         val now = timeProvider.now()
         val uuid = uUIDProvider.randomUUID()
-        val insert = sql"""INSERT INTO historical (id, code, brand, xnumber, indexreturn, nav, asofdate, exdividend, createdat) values (${uuid}, ${eTFData.code}, ${eTFData.xnumber}, 'iShares', ${eTFData.indexReturn}, ${eTFData.nAV}, ${eTFData.asOfDate}, ${eTFData.exDividends}, ${now} )""".update().apply
+        val insert = sql"""INSERT INTO historical (id, code, brand, xnumber, indexreturn, nav, asofdate, exdividend, createdat) values (${uuid}, ${eTFData.code}, ${eTFData.brand}, ${eTFData.xnumber}, ${eTFData.indexReturn}, ${eTFData.nAV}, ${eTFData.asOfDate}, ${eTFData.exDividends}, ${now} )""".update().apply
         if (insert == 0) {
           Failure[ETFData](new RuntimeException("Could not insert data"))
         } else {

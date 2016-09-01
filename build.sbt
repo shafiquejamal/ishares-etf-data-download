@@ -1,4 +1,4 @@
-name := """securitiesdata"""
+name := """isharesetfdatadownload"""
 
 version := "1.0"
 
@@ -7,6 +7,7 @@ scalaVersion := "2.11.8"
 // Change this to another test framework if you prefer
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.4" % "test",
+  "org.scalamock" %% "scalamock-scalatest-support" % "3.2.2" % "test",
   "org.scalikejdbc" %% "scalikejdbc"       % "2.4.2",
   "org.scalikejdbc" %% "scalikejdbc-test"   % "2.4.2"   % "test",
   "ch.qos.logback"  %  "logback-classic"   % "1.1.7",
