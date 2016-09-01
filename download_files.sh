@@ -6,7 +6,7 @@ do
 	echo "File: $f" 
 	echo "+++++++++++++++++++++"
 	while IFS=, read number name code; do
-  		OUTPUTPATH="downloaded_files/${code}_${number}_${name}"
+  		OUTPUTPATH="${ISHARES_DATA_DIR}/${code}_${number}_${name}"
   		rm -f "${OUTPUTPATH}.*"
   		wget -c "https://www.blackrock.com/ca/individual/en/$number/fund-download.dl" -O "${OUTPUTPATH}.xls"
   		cat "${OUTPUTPATH}.xls" | perl -0777 -pe 's#</Style>#</ss:Style>#sg' > "${OUTPUTPATH}2.xls"
@@ -24,3 +24,5 @@ do
 	echo "---------------------"
 	echo ""
 done
+
+java -jar target/scala-2.11/isharesetfdatadownload-assembly-1.0.jar ${ISHARES_DATA_DIR}
