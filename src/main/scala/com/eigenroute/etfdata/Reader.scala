@@ -15,7 +15,7 @@ object Reader {
     val header = allRawData.head
     val code = file.getName.take(3)
     val brand = file.getName.drop(11).dropRight(4)
-    val number = file.getName.slice(4,10)
+    val xnumber = file.getName.slice(4,10)
 
     val numberOfHeadings = header.split(""",(?=([^\"]*\"[^\"]*\")*[^\"]*$)""").length
 
@@ -34,6 +34,7 @@ object Reader {
         dateFormatter.parseDateTime(unparsedDate.replaceAllLiterally(""""""", "")),
         code,
         brand,
+        xnumber,
         indexReturn,
         nav,
         exDividend

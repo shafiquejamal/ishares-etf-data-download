@@ -15,11 +15,11 @@ class ReaderUTest extends FlatSpec with ShouldMatchers {
 
     data.length shouldEqual 1810
     data.head shouldEqual ETFData(new DateTime(2016, 8, 30, 0, 0, 0), "XEM",
-                                  "ishares-msci-emerging-markets-index-etf", 166.99041, 27.248022, 0)
+                                  "ishares-msci-emerging-markets-index-etf", "239636", 166.99041, 27.248022, 0)
     data(52) shouldEqual ETFData(new DateTime(2016, 6, 15, 0, 0, 0), "XEM",
-                                 "ishares-msci-emerging-markets-index-etf", 146.693515, 24.077652, 0.06536)
+                                 "ishares-msci-emerging-markets-index-etf", "239636", 146.693515, 24.077652, 0.06536)
     data.last shouldEqual ETFData(new DateTime(2009, 6, 18, 0, 0, 0), "XEM",
-                                  "ishares-msci-emerging-markets-index-etf", 100d, 20, 0)
+                                  "ishares-msci-emerging-markets-index-etf", "239636", 100d, 20, 0)
   }
 
 
@@ -31,11 +31,11 @@ class ReaderUTest extends FlatSpec with ShouldMatchers {
 
     data.length shouldEqual 1667
     data.head shouldEqual ETFData(new DateTime(2016, 8, 30, 0, 0, 0), "CHB",
-                                  "ishares-advantaged-us-high-yield-bond-index-etf-cadhedged-fund", 0d, 19.150501, 0d)
+                                  "ishares-advantaged-us-high-yield-bond-index-etf-cadhedged-fund", "239441", 0d, 19.150501, 0d)
     data(4) shouldEqual ETFData(new DateTime(2016, 8, 24, 0, 0, 0), "CHB",
-                                 "ishares-advantaged-us-high-yield-bond-index-etf-cadhedged-fund", 0d, 19.128415, 0.09298)
+                                 "ishares-advantaged-us-high-yield-bond-index-etf-cadhedged-fund", "239441", 0d, 19.128415, 0.09298)
     data.last shouldEqual ETFData(new DateTime(2010, 1, 11, 0, 0, 0), "CHB",
-                                  "ishares-advantaged-us-high-yield-bond-index-etf-cadhedged-fund", 0d, 19.908334, 0)
+                                  "ishares-advantaged-us-high-yield-bond-index-etf-cadhedged-fund", "239441", 0d, 19.908334, 0)
 
   }
 }

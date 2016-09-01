@@ -32,12 +32,12 @@ class ETFDAOUTest
   val eTFDAO = new ETFDAO(new TestTimeProviderImpl, new TestUUIDProviderImpl, dbConfig)
 
   "adding etf data" should "succeed if the data is not already in the db" in {
-    val eTFData = ETFData(new DateTime(2016, 10, 2, 0, 0, 0), "XIU", "iSharesblahblahblah", 100d, 54d, 12d)
+    val eTFData = ETFData(new DateTime(2016, 10, 2, 0, 0, 0), "XIU", "123456", "iSharesblahblahblah", 100d, 54d, 12d)
     eTFDAO.save(eTFData).success.value shouldEqual eTFData
   }
 
   it should "fail if the data is already in the db" in {
-    val eTFData = ETFData(date1, "XEM", "iSharesblahblahblah", 110d, 25d, 7d)
+    val eTFData = ETFData(date1, "XEM", "246800", "iSharesblahblahblah", 110d, 25d, 7d)
     eTFDAO.save(eTFData).failure.exception shouldBe a[RuntimeException]
   }
 

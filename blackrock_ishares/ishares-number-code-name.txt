@@ -27,7 +27,6 @@
 239486,ishares-canadian-government-bond-index-etf,XGB
 239433,ishares-high-quality-canadian-bond-index-etf,XQB
 239476,ishares-canadian-financial-monthly-income-etf,FIE
-272269,ishares-gold-bullion-etf,CGL
 239489,ishares-canadian-long-term-bond-index-etf,XLB
 239625,ishares-msci-eafe-minimum-volatility-index-etf,XMI
 275749,ishares-sp-us-mid-cap-index-etf-ca-hedged,XMH
@@ -50,7 +49,6 @@
 239842,ishares-sptsx-capped-materials-index-etf,XMA
 251423,ishares-msci-emerging-markets-imi-index-etf,XEC
 239694,ishares-msci-usa-minimum-volatility-index-etf,XMU
-239863,ishares-us-fundamental-index-fund,CLU
 239852,ishares-sptsx-small-cap-index-etf,XCS
 239859,ishares-us-ig-corporate-bond-index-etf-cadhedged-fund,XIG
 239558,ishares-global-real-estate-index-fund,CGR
@@ -58,7 +56,6 @@
 239435,ishares-convertible-bond-index-etf,CVD
 262832,ishares-msci-europe-imi-index-etf-cadhedged-fund,XEH
 239698,ishares-nasdaq-100-index-etf-cadhedged-fund,XQQ
-239860,ishares-us-fundamental-index-fund,CLU
 271493,ishares-short-term-strategic-fixed-income-etf,XSI
 269105,ishares-core-short-term-high-quality-canadian-bond-index-etf,XSQ
 239604,ishares-msci-all-country-world-minimum-volatility-index-etf,XMW
@@ -78,7 +75,6 @@
 239847,ishares-sptsx-global-base-metals-index-etf,XBM
 239732,ishares-india-index-etf,XID
 239841,ishares-sptsx-capped-information-technology-index-etf,XIT
-272952,ishares-silver-bullion-etf,SVR
 239554,ishares-global-infrastructure-index-fund,CIF
 251242,ishares-sp-global-consumer-discretionary-index-etf-cadhedged-fund,XCD
 239497,ishares-canadian-growth-index-etf,XCG
@@ -93,7 +89,6 @@
 239442,ishares-alternatives-completion-portfolio-builder-fund,XAL
 239481,ishares-china-index-etf,XCH
 251243,ishares-sp-global-industrials-index-etf-cadhedged-fund,XGI
-240642,ishares-silver-bullion-etf,SVR
 277693,ishares-factorselect-msci-usa-index-etf-cad-hedged,XFA
 275746,ishares-sp-us-mid-cap-index-etf,XMC
 283153,ishares-edge-msci-min-vol-usa-index-etf-(cad-hedged)-fund,XMS
