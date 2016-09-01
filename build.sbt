@@ -18,7 +18,7 @@ libraryDependencies ++= Seq(
 )
 
 flywayUrl := sys.props.getOrElse("SECURITIESDATA_URL", default = "jdbc:postgresql://localhost:5432/securitiesdata")
-flywayUser := sys.props.getOrElse("SECURITIESDATA_USER", default = "postgres")
-flywayPassword := sys.props.getOrElse("SECURITIESDATA_PASSWORD", default = "postgres")
+flywayUser := sys.props.getOrElse("SECURITIESDATA_DEFAULT_DB_USERNAME", default = "postgres")
+flywayPassword := sys.props.getOrElse("SECURITIESDATA_DEFAULT_DB_PASSWORD", default = "postgres")
 
 coverageEnabled in Test:= true
