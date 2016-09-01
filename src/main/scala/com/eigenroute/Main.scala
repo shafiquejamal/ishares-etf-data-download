@@ -18,11 +18,9 @@ object Main {
     dBConfig.setUpAllDB()
 
     files.foreach { file =>
-      println(file.getAbsolutePath)
       val securitiesData = Reader.readETFData(file)
       securitiesData.foreach { eTFDATA =>
         new ETFDAO(TimeProviderImpl, UUIDProviderImpl, dBConfig).save(eTFDATA)
-        println(eTFDATA)
       }
     }
 

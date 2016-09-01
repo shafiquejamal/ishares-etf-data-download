@@ -8,14 +8,8 @@ import scala.util.{Failure, Success, Try}
 
 class ETFDAO(timeProvider:TimeProvider, uUIDProvider: UUIDProvider, dBConfig: DBConfig) {
 
-
-  def save(eTFData: ETFData):Try[ETFData] = {
-    NamedDB(Symbol(dBConfig.dBName)) localTx { implicit dBSession =>
-
-      val now = timeProvider.now()
-      val uuid = uUIDProvider.randomUUID()
-
-      val eTFDataAlreadyInDB = sql"""SELECT code, brand, xnumber, indexreturn, nav, asofdate, exdividend FROM historical where
+  private def queryETFData(eTFData: ETFData)(implicit session:DBSession):Option[ETFData] =
+    sql"""SELECT code, brand, xnumber, indexreturn, nav, asofdate, exdividend FROM historical where
           code = ${eTFData.code} AND
           xnumber = ${eTFData.xnumber} AND
           indexreturn = ${eTFData.indexReturn} AND
@@ -24,7 +18,17 @@ class ETFDAO(timeProvider:TimeProvider, uUIDProvider: UUIDProvider, dBConfig: DB
           exdividend = ${eTFData.exDividends}
          """.map(ETFData.converter).single().apply()
 
+  def by(eTFData: ETFData):Option[ETFData] =
+    NamedDB(Symbol(dBConfig.dBName)) readOnly { implicit dBSession => queryETFData(eTFData) }
+
+  def save(eTFData: ETFData):Try[ETFData] = {
+    NamedDB(Symbol(dBConfig.dBName)) localTx { implicit dBSession =>
+
+      val eTFDataAlreadyInDB = queryETFData(eTFData)
+
       if (eTFDataAlreadyInDB.isEmpty) {
+        val now = timeProvider.now()
+        val uuid = uUIDProvider.randomUUID()
         val insert = sql"""INSERT INTO historical (id, code, brand, xnumber, indexreturn, nav, asofdate, exdividend, createdat) values (${uuid}, ${eTFData.code}, ${eTFData.xnumber}, 'iShares', ${eTFData.indexReturn}, ${eTFData.nAV}, ${eTFData.asOfDate}, ${eTFData.exDividends}, ${now} )""".update().apply
         if (insert == 0) {
           Failure[ETFData](new RuntimeException("Could not insert data"))
