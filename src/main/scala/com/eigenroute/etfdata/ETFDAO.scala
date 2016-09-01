@@ -8,11 +8,9 @@ import scala.util.{Failure, Success, Try}
 
 class ETFDAO(timeProvider:TimeProvider, uUIDProvider: UUIDProvider, dBConfig: DBConfig) {
 
-  val namedDB = NamedDB(Symbol(dBConfig.dBName))
-  namedDB.autoClose(false)
 
   def save(eTFData: ETFData):Try[ETFData] = {
-    namedDB localTx { implicit dBSession =>
+    NamedDB(Symbol(dBConfig.dBName)) localTx { implicit dBSession =>
 
       val now = timeProvider.now()
       val uuid = uUIDProvider.randomUUID()

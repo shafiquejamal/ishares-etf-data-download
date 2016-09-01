@@ -21,6 +21,7 @@ class ETFDAOUTest
     dbConfig.setUpAllDB()
     migrate(dbConfig)
     eTFDataToAdd.foreach(_.update().apply())
+    session.close()
     super.beforeEach()
   }
 
