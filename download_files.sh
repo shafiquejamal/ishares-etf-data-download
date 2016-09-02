@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for f in ./blackrock_ishares/*.txt
+for f in "${SECURITIESDATA_PROJECT_ROOT}"/blackrock_ishares/*.txt
 do
 	echo "*********************"
 	echo "File: $f" 
