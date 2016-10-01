@@ -24,4 +24,4 @@ sbt assembly
 ./download_files.sh
 ```
 
-The bash script will download the data, then run the .jar file to store the data in your postgres db.
+The bash script will download the data, then run the .jar file to store the data in your postgres db. You can then run [the portfolio analysis](https://github.com/shafiquejamal/portfolioanalysis) project.
