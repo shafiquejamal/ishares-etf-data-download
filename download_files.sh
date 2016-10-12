@@ -23,7 +23,7 @@ do
             -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' \
             -H 'Cache-Control: max-age=0' \
             -H 'Connection: keep-alive' \
-            --data 'port='"$port"'&assetCode=EQUITY&startDt=27-09-2016&endDt=11-10-2016&fundName=foo&column1=Date&column2=Market+price+%28CAD%29&column3=NAV+%28CAD%29&footnote=%C2%A0' \
+            --data 'port='"$port"'&assetCode=EQUITY&startDt=01-01-2000&endDt=11-10-2016&fundName=foo&column1=Date&column2=Market+price+%28CAD%29&column3=NAV+%28CAD%29&footnote=%C2%A0' \
             --compressed \
             > "${OUTPUTPATH}.csv"
 
