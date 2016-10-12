@@ -1,0 +1,24 @@
+9561,FTSE Canada All Cap Index ETF,VCN
+9554,FTSE Canada Index ETF,VCE
+9559,FTSE Canadian Capped REIT Index ETF,VRE
+9560,FTSE Canadian High Dividend Yield Index ETF,VDY
+9569,FTSE Developed All Cap ex North America Index ETF,VIU
+9570,FTSE Developed All Cap ex North America Index ETF (CAD-hedged),VI
+9558,FTSE Developed All Cap ex U.S. Index ETF,VDU
+9555,FTSE Developed All Cap ex U.S. Index ETF (CAD-hedged),VEF
+9550,FTSE Developed Asia Pacific All Cap Index ETF,VA
+9950,FTSE Developed Asia Pacific All Cap Index ETF (CAD-hedged),VAH
+9549,FTSE Developed Europe All Cap Index ETF,VE
+9891,FTSE Developed Europe All Cap Index ETF (CAD-hedged),VEH
+9556,FTSE Emerging Markets All Cap Index ETF,VEE
+9548,FTSE Global All Cap ex Canada Index ETF,VXC
+9796,Global Liquidity Factor ETF,VLQ
+9828,Global Minimum Volatility ETF,VVO
+9835,Global Momentum Factor ETF,VMO
+9795,Global Value Factor ETF,VVL
+9563,S&P 500 Index ETF,VFV
+9562,S&P 500 Index ETF (CAD-hedged),VSP
+9566,U.S. Dividend Appreciation Index ETF,VGG
+9564,U.S. Dividend Appreciation Index ETF (CAD-hedged),VGH
+9557,U.S. Total Market Index ETF,VUN
+9551,U.S. Total Market Index ETF (CAD-hedged),VUS

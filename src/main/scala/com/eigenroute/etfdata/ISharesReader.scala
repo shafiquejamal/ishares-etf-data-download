@@ -6,9 +6,9 @@ import org.joda.time.format.DateTimeFormat
 
 import scala.util.Try
 
-object Reader {
+object ISharesReader extends FileReader {
 
-  def readETFData(file:File):Seq[ETFData] = {
+  override def readETFData(file: File): Seq[ETFData] = {
     val dateFormatter = DateTimeFormat.forPattern("MMM dd, yyy")
     val allRawData = io.Source.fromFile(file).getLines.toList
     val rawData = allRawData.tail

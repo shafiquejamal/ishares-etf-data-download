@@ -3,14 +3,14 @@ package com.eigenroute.etfdata
 import java.io.File
 
 import org.joda.time.DateTime
-import org.scalatest.{ShouldMatchers, FlatSpec}
+import org.scalatest.{FlatSpecLike, ShouldMatchers}
 
-class ReaderUTest extends FlatSpec with ShouldMatchers {
+class ISharesReaderUTest extends FlatSpecLike with ShouldMatchers {
 
   "the reader" should "convert the historical nav data to a collection of eft data - 4 columns" in {
 
     val data =
-      Reader.readETFData(
+      ISharesReader.readETFData(
       new File("src/test/scala/com/eigenroute/etfdata/XEM_239636_ishares-msci-emerging-markets-index-etf.csv"))
 
     data.length shouldEqual 1810
@@ -26,7 +26,7 @@ class ReaderUTest extends FlatSpec with ShouldMatchers {
   it should "convert the historical nav data to a collection of eft data - 3 columns" in {
 
     val data =
-      Reader.readETFData(
+      ISharesReader.readETFData(
         new File("src/test/scala/com/eigenroute/etfdata/CHB_239441_ishares-advantaged-us-high-yield-bond-index-etf-cadhedged-fund.csv"))
 
     data.length shouldEqual 1667
