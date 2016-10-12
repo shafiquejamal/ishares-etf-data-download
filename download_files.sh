@@ -8,7 +8,13 @@ do
 	echo "+++++++++++++++++++++"
 	while IFS=, read port name code; do
 	    name=$(sed 's/ /+/g' <<< "${name}")
-  		OUTPUTPATH="${VANGUARD_DATA_DIR}/${code}_${port}_${name}"
+	    codelength=${#code}
+	    echo "$codelength"
+	    if [ "$codelength" -eq "2" ]; then
+	        echo "code length is 2"
+	        code="${code}_"
+	    fi
+  		OUTPUTPATH="${VANGUARD_DATA_DIR}/vanguard_${code}_${port}_${name}"
   		rm "${OUTPUTPATH}"*
         echo "${OUTPUTPATH}"
         curl 'https://www.vanguardcanada.ca/individual/mvc/download/ETFPriceHist' -H 'Accept-Encoding: gzip, deflate, br' \
@@ -21,9 +27,12 @@ do
             --compressed \
             > "${OUTPUTPATH}.csv"
 
-        perl -pi -e 's/\$//g' "${OUTPUTPATH}.csv"
-        perl -pi -e 's/"="//g' "${OUTPUTPATH}.csv"
-        perl -pi -e 's/"""/"/g' "${OUTPUTPATH}.csv"
+        tail -n+4 "${OUTPUTPATH}.csv" > "${OUTPUTPATH}2.csv"
+        perl -pi -e 's/\$//g' "${OUTPUTPATH}2.csv"
+        perl -pi -e 's/"="//g' "${OUTPUTPATH}2.csv"
+        perl -pi -e 's/"""/"/g' "${OUTPUTPATH}2.csv"
+        rm "${OUTPUTPATH}.csv"
+        mv "${OUTPUTPATH}2.csv" "${OUTPUTPATH}.csv"
 
   	done <"$f"
   	echo "---------------------"

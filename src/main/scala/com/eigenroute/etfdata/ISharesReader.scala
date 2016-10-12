@@ -42,6 +42,4 @@ object ISharesReader extends FileReader {
     }
   }.toSeq
 
-  private def convertStringColumnToDouble(cellValue:String):Double = Try(cellValue.toDouble).toOption.getOrElse(0)
-
 }
