@@ -1,3 +1,4 @@
+9552,Canadian Aggregate Bond Index ETF,VAB
 9561,FTSE Canada All Cap Index ETF,VCN
 9554,FTSE Canada Index ETF,VCE
 9559,FTSE Canadian Capped REIT Index ETF,VRE
