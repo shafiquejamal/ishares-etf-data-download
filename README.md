@@ -8,7 +8,7 @@
 
 ## Installation
 
-Set the environment variables in `conf/application.conf`. 
+Set all of the environment variables that are referenced in `src/main/resources/application.conf`. 
 
 Set the environment variable `ISHARES_DATA_DIR` to the path to where you will download the files. In the instructions below, this directory is the `downloaded_files/` directory in the project root directory. Set `SECURITIESDATA_PROJECT_ROOT` to point to the project root directory.
 
